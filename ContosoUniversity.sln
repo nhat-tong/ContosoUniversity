@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{0BEBE401-1AB1-43F3-9F29-1FBB7AD3084F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "DAL\Data.csproj", "{7B660BAF-10BA-4D2E-ADE8-C91D6613EE39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{F8B475FE-EC3D-47DD-86D8-A6A6E26F8755}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0BEBE401-1AB1-43F3-9F29-1FBB7AD3084F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BEBE401-1AB1-43F3-9F29-1FBB7AD3084F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BEBE401-1AB1-43F3-9F29-1FBB7AD3084F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B660BAF-10BA-4D2E-ADE8-C91D6613EE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B660BAF-10BA-4D2E-ADE8-C91D6613EE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B660BAF-10BA-4D2E-ADE8-C91D6613EE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B660BAF-10BA-4D2E-ADE8-C91D6613EE39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B475FE-EC3D-47DD-86D8-A6A6E26F8755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B475FE-EC3D-47DD-86D8-A6A6E26F8755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B475FE-EC3D-47DD-86D8-A6A6E26F8755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B475FE-EC3D-47DD-86D8-A6A6E26F8755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
