@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Data.Domain;
 using System.Net;
 using System;
+using System.Data.Entity.Infrastructure;
 using X.PagedList;
 #endregion
 
@@ -91,7 +92,7 @@ namespace ContosoUniversity.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException /* dex */)
+            catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line
                 //here to write a log.
@@ -122,7 +123,7 @@ namespace ContosoUniversity.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException /* dex */)
+            catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to
                 //write a log.
@@ -168,7 +169,7 @@ namespace ContosoUniversity.Controllers
 
                 _dbContext.SaveChanges();
             }
-            catch (DataException/* dex */)
+            catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line
                 //here to write a log.

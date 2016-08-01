@@ -54,6 +54,12 @@
     <Compile Include="Domain\Course.cs" />
     <Compile Include="Domain\Enrollment.cs" />
     <Compile Include="Domain\Student.cs" />
+    <Compile Include="Framework\CustomExecutionStrategy.cs" />
+    <Compile Include="Framework\Interceptor\LoggingInterceptor.cs" />
+    <Compile Include="Framework\Interceptor\TransientErrorInterceptor.cs" />
+    <Compile Include="Framework\Logging\ILogger.cs" />
+    <Compile Include="Framework\Logging\Logger.cs" />
+    <Compile Include="Framework\MyException.cs" />
     <Compile Include="Mapping\CourseMap.cs" />
     <Compile Include="Mapping\EnrollmentMap.cs" />
     <Compile Include="Mapping\StudentMap.cs" />
