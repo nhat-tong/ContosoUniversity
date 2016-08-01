@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Data.Domain;
 using System.Net;
 using System;
+using X.PagedList;
 #endregion
 
 namespace ContosoUniversity.Controllers
@@ -20,11 +21,55 @@ namespace ContosoUniversity.Controllers
             _dbContext = new ContosoDbContext();
         }
 
-        // GET: Student
-        public ActionResult Index()
+        #region Index
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(_dbContext.Students.ToList());
+            // Ref: server pagins using X.PagedList.Mvc: https://github.com/kpi-ua/X.PagedList
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var students = from s in _dbContext.Students
+                           select s;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s =>
+                s.LastName.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.FirstName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                default: // Name ascending
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
+        #endregion
 
         #region Create
         [HttpGet]
