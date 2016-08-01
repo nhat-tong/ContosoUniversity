@@ -1,0 +1,36 @@
+﻿@model Data.Domain.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Delete", "Student", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EnrollmentDate, new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EnrollmentDate)
+            @Html.ValidationMessageFor(model => model.EnrollmentDate)
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+}
