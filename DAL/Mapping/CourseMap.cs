@@ -19,6 +19,11 @@ namespace Data.Mapping
             Property(c => c.Id).HasColumnName("Id");
             Property(c => c.Title).HasColumnName("Title");
             Property(c => c.Credits).HasColumnName("Credits");
+
+            // Relationships
+            HasRequired(c => c.Department)
+                .WithMany(d => d.Courses)
+                .HasForeignKey(c => c.DepartmentId);
         }
     }
 }

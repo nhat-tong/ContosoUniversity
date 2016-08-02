@@ -52,7 +52,10 @@
     <Compile Include="ContosoConfiguration.cs" />
     <Compile Include="ContosoDbContext.cs" />
     <Compile Include="Domain\Course.cs" />
+    <Compile Include="Domain\Department.cs" />
     <Compile Include="Domain\Enrollment.cs" />
+    <Compile Include="Domain\Instructor.cs" />
+    <Compile Include="Domain\OfficeAssignment.cs" />
     <Compile Include="Domain\Student.cs" />
     <Compile Include="Framework\CustomExecutionStrategy.cs" />
     <Compile Include="Framework\Interceptor\LoggingInterceptor.cs" />
@@ -61,15 +64,14 @@
     <Compile Include="Framework\Logging\Logger.cs" />
     <Compile Include="Framework\MyException.cs" />
     <Compile Include="Mapping\CourseMap.cs" />
+    <Compile Include="Mapping\DepartmentMap.cs" />
     <Compile Include="Mapping\EnrollmentMap.cs" />
+    <Compile Include="Mapping\InstructorMap.cs" />
+    <Compile Include="Mapping\OfficeAssignmentMap.cs" />
     <Compile Include="Mapping\StudentMap.cs" />
     <Compile Include="Migrations\201607291222002_InitialCreate.cs" />
     <Compile Include="Migrations\201607291222002_InitialCreate.Designer.cs">
       <DependentUpon>201607291222002_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607291254404_test.cs" />
-    <Compile Include="Migrations\201607291254404_test.Designer.cs">
-      <DependentUpon>201607291254404_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,9 +83,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607291222002_InitialCreate.resx">
       <DependentUpon>201607291222002_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607291254404_test.resx">
-      <DependentUpon>201607291254404_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

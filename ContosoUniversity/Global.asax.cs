@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿#region using
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
+using ContosoUniversity.AutoMapper;
+#endregion
 
 namespace ContosoUniversity
 {
@@ -16,6 +16,12 @@ namespace ContosoUniversity
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            // Configure AutoMapper
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<StudentProfile>();
+            });
         }
     }
 }

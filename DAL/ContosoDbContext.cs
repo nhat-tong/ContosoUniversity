@@ -31,6 +31,9 @@ namespace Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
+        public DbSet<Department> Departments { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -38,6 +41,9 @@ namespace Data
             modelBuilder.Configurations.Add(new CourseMap());
             modelBuilder.Configurations.Add(new StudentMap());
             modelBuilder.Configurations.Add(new EnrollmentMap());
+            modelBuilder.Configurations.Add(new InstructorMap());
+            modelBuilder.Configurations.Add(new OfficeAssignmentMap());
+            modelBuilder.Configurations.Add(new DepartmentMap());
         }
     }
 }

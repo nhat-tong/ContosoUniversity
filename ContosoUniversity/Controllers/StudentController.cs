@@ -1,6 +1,5 @@
 ﻿#region using
 using Data;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -8,6 +7,9 @@ using Data.Domain;
 using System.Net;
 using System;
 using System.Data.Entity.Infrastructure;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using ContosoUniversity.Models;
 using X.PagedList;
 #endregion
 
@@ -68,7 +70,9 @@ namespace ContosoUniversity.Controllers
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(students.ToPagedList(pageNumber, pageSize));
+
+            // Using method ProjectTo of  AutoMapper.QueryableExtensions to mapping IQueryable objects
+            return View(students.ProjectTo<StudentViewModel>().ToPagedList(pageNumber, pageSize));
         }
         #endregion
 
@@ -76,18 +80,18 @@ namespace ContosoUniversity.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new Student());
+            return View(new StudentViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude = "Id")]Student student)
+        public ActionResult Create([Bind(Exclude = "Id")]StudentViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _dbContext.Students.Add(student);
+                    _dbContext.Students.Add(Mapper.Map<Student>(vm));
                     _dbContext.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -99,7 +103,7 @@ namespace ContosoUniversity.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            return View(student);
+            return View(vm);
         }
         #endregion
 
@@ -107,17 +111,18 @@ namespace ContosoUniversity.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            return View(_dbContext.Students.Find(id));
+            return View(Mapper.Map<StudentViewModel>(_dbContext.Students.Find(id)));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id, LastName, FirstName, EnrollmentDate")]Student student)
+        public ActionResult Edit([Bind(Include = "Id, LastName, FirstName, EnrollmentDate")]StudentViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var student = Mapper.Map<Student>(vm);
                     _dbContext.Entry(student).State = EntityState.Modified;
                     _dbContext.SaveChanges();
                     return RedirectToAction("Index");
@@ -130,7 +135,7 @@ namespace ContosoUniversity.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            return View(student);
+            return View(vm);
         }
         #endregion
 
