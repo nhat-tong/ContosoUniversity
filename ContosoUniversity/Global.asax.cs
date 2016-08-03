@@ -21,6 +21,11 @@ namespace ContosoUniversity
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<StudentProfile>();
+                cfg.AddProfile<DepartmentProfile>();
+                cfg.AddProfile<OfficeAssignmentProfile>();
+                cfg.AddProfile<EnrollmentProfile>();
+                cfg.AddProfile<CourseProfile>();
+                cfg.AddProfile<InstructorProfile>();
             });
         }
     }

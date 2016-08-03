@@ -10,6 +10,9 @@ namespace Data
         #region Constructor
         public ContosoDbContext() : base("Contoso")
         {
+            // Disable Lazy Loading
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public ContosoDbContext(string connectionString) : base(connectionString)
@@ -23,6 +26,7 @@ namespace Data
         /// </summary>
         static ContosoDbContext()
         {
+            // Disable Database Initializer
             Database.SetInitializer<ContosoDbContext>(null);
         }
         #endregion

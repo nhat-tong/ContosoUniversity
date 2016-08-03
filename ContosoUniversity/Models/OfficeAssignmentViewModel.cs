@@ -5,7 +5,7 @@ namespace ContosoUniversity.Models
 {
     public class OfficeAssignmentViewModel
     {
-        public Guid InstructorId { get; set; }
+        public int InstructorId { get; set; }
         [StringLength(50)]
         [Display(Name = "Office Location")]
         public string Location { get; set; }

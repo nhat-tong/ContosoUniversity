@@ -15,13 +15,10 @@ using X.PagedList;
 
 namespace ContosoUniversity.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : BaseController
     {
-        private ContosoDbContext _dbContext;
-
         public StudentController()
         {
-            _dbContext = new ContosoDbContext();
         }
 
         #region Index
@@ -41,7 +38,7 @@ namespace ContosoUniversity.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var students = from s in _dbContext.Students
+            var students = from s in DbContext.Students
                            select s;
 
             if (!string.IsNullOrEmpty(searchString))
@@ -91,8 +88,8 @@ namespace ContosoUniversity.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _dbContext.Students.Add(Mapper.Map<Student>(vm));
-                    _dbContext.SaveChanges();
+                    DbContext.Students.Add(Mapper.Map<Student>(vm));
+                    DbContext.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
@@ -111,7 +108,7 @@ namespace ContosoUniversity.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            return View(Mapper.Map<StudentViewModel>(_dbContext.Students.Find(id)));
+            return View(Mapper.Map<StudentViewModel>(DbContext.Students.Find(id)));
         }
 
         [HttpPost]
@@ -123,8 +120,8 @@ namespace ContosoUniversity.Controllers
                 if (ModelState.IsValid)
                 {
                     var student = Mapper.Map<Student>(vm);
-                    _dbContext.Entry(student).State = EntityState.Modified;
-                    _dbContext.SaveChanges();
+                    DbContext.Entry(student).State = EntityState.Modified;
+                    DbContext.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
@@ -150,7 +147,7 @@ namespace ContosoUniversity.Controllers
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            Student student = _dbContext.Students.Find(id);
+            Student student = DbContext.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -170,9 +167,9 @@ namespace ContosoUniversity.Controllers
                 //_dbContext.Students.Remove(student);
 
                 var student = new Student { Id = id };
-                _dbContext.Entry(student).State = EntityState.Deleted;
+                DbContext.Entry(student).State = EntityState.Deleted;
 
-                _dbContext.SaveChanges();
+                DbContext.SaveChanges();
             }
             catch (RetryLimitExceededException /* dex */)
             {
@@ -185,14 +182,6 @@ namespace ContosoUniversity.Controllers
                 });
             }
             return RedirectToAction("Index");
-        }
-        #endregion
-
-        #region Dispose
-        protected override void Dispose(bool disposing)
-        {
-            _dbContext.Dispose();
-            base.Dispose(disposing);
         }
         #endregion
     }
