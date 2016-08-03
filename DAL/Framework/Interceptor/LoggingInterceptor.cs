@@ -20,7 +20,7 @@ namespace Data.Framework.Interceptor
             _stopwatch.Stop();
             if (interceptionContext.Exception != null)
             {
-                _logger.Error(interceptionContext.Exception, "Error executing command: { 0}", command.CommandText);
+                _logger.Error(interceptionContext.Exception, "Error executing command: {0}", command.CommandText);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace Data.Framework.Interceptor
             _stopwatch.Stop();
             if (interceptionContext.Exception != null)
             {
-            _logger.Error(interceptionContext.Exception, "Error executing command: { 0}", command.CommandText);
+            _logger.Error(interceptionContext.Exception, "Error executing command: {0}", command.CommandText);
             }
             else
             {

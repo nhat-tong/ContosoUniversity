@@ -139,55 +139,66 @@ namespace Data.Migrations
             var enrollments = new List<Enrollment>
             {
                 new Enrollment {
+                    Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Alexander").Id,
                     CourseId = courses.Single(c => c.Title == "Chemistry" ).Id,
                     Grade = Grade.A
                 },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Alexander").Id,
                     CourseId = courses.Single(c => c.Title == "Microeconomics" ).Id,
                     Grade = Grade.C
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Alexander").Id,
                     CourseId = courses.Single(c => c.Title == "Macroeconomics" ).Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                      StudentId = students.Single(s => s.LastName == "Alonso").Id,
                     CourseId = courses.Single(c => c.Title == "Calculus" ).Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                      StudentId = students.Single(s => s.LastName == "Alonso").Id,
                     CourseId = courses.Single(c => c.Title == "Trigonometry" ).Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Alonso").Id,
                     CourseId = courses.Single(c => c.Title == "Composition" ).Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Anand").Id,
                     CourseId = courses.Single(c => c.Title == "Chemistry" ).Id
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Anand").Id,
                     CourseId = courses.Single(c => c.Title == "Microeconomics").Id,
                     Grade = Grade.B
                  },
                 new Enrollment {
+                    Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Barzdukas").Id,
                     CourseId = courses.Single(c => c.Title == "Chemistry").Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                     Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Li").Id,
                     CourseId = courses.Single(c => c.Title == "Composition").Id,
                     Grade = Grade.B
                  },
                  new Enrollment {
+                    Id = Guid.NewGuid(),
                     StudentId = students.Single(s => s.LastName == "Justice").Id,
                     CourseId = courses.Single(c => c.Title == "Literature").Id,
                     Grade = Grade.B
@@ -196,8 +207,7 @@ namespace Data.Migrations
 
             foreach (Enrollment e in enrollments)
             {
-                var enrollmentInDataBase = context.Enrollments.Where(
-                    s =>
+                var enrollmentInDataBase = context.Enrollments.Where(s =>
                          s.Student.Id == e.StudentId &&
                          s.Course.Id == e.CourseId).SingleOrDefault();
                 if (enrollmentInDataBase == null)
@@ -215,5 +225,6 @@ namespace Data.Migrations
             if (inst == null)
                 crs.Instructors.Add(context.Instructors.Single(i => i.LastName == instructorName));
         }
+
     }
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Data.Domain;
 
 namespace Data.Mapping
@@ -22,7 +17,7 @@ namespace Data.Mapping
 
             ToTable("Department");
 
-            // Relationship
+            // Zero-to-Many relationship between Instructor and Department (because of InstructorId is nullable)
             HasOptional(d => d.Administrator)
                 .WithMany()
                 .HasForeignKey(d => d.InstructorId);

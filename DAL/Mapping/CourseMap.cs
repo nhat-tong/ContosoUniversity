@@ -20,10 +20,17 @@ namespace Data.Mapping
             Property(c => c.Title).HasColumnName("Title");
             Property(c => c.Credits).HasColumnName("Credits");
 
-            // Relationships
+            // One-to-Many relationship between Course and Department
             HasRequired(c => c.Department)
                 .WithMany(d => d.Courses)
                 .HasForeignKey(c => c.DepartmentId);
+
+            // Customization many-to-many relationship between Course and Instructor
+            HasMany(c => c.Instructors)
+                .WithMany(ins => ins.Courses)
+                .Map(t => t.MapLeftKey("CourseId")
+                           .MapRightKey("InstructorId")
+                           .ToTable("CourseInstructor"));
         }
     }
 }

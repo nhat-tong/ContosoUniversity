@@ -18,7 +18,10 @@ namespace Data.Mapping
 
             // Table & Columns Mapping
             ToTable("Instructor");
-            HasOptional(ins => ins.OfficeAssignment);
+
+            // Zero-to-One relationship between Instructor and OfficeAssignment
+            HasOptional(ins => ins.OfficeAssignment)
+                .WithRequired(off => off.Instructor);
         }
     }
 }

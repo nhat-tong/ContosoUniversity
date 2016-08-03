@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201607291222002_InitialCreate.Designer.cs">
       <DependentUpon>201607291222002_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608031024397_AddComplexeModel.cs" />
+    <Compile Include="Migrations\201608031024397_AddComplexeModel.Designer.cs">
+      <DependentUpon>201608031024397_AddComplexeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +87,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607291222002_InitialCreate.resx">
       <DependentUpon>201607291222002_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608031024397_AddComplexeModel.resx">
+      <DependentUpon>201608031024397_AddComplexeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,10 +16,7 @@ namespace Data.Mapping
             HasKey(off => off.InstructorId);
             Property(off => off.Location).HasMaxLength(50);
 
-            ToTable("OfficeAssignment");
-            HasRequired(off => off.Instructor)
-                .WithMany()
-                .HasForeignKey(off => off.InstructorId);
+            ToTable("OfficeAssignment");           
         }
     }
 }
