@@ -167,6 +167,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssignedCourseDataViewModel.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
     <Compile Include="Models\DepartmentViewModel.cs" />
     <Compile Include="Models\EnrollmentViewModel.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Instructor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

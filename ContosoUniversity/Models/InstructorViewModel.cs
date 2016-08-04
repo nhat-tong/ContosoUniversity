@@ -7,7 +7,7 @@ namespace ContosoUniversity.Models
 {
     public class InstructorViewModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
